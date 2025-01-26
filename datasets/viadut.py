@@ -97,8 +97,7 @@ class ViaductDataset(torch.utils.data.Dataset):
             mask = self.transform_mask(mask)
         else:
             # If not a test image, use an empty mask (zeros tensor of correct shape)
-            mask = torch.zeros([1, self.imagesize, self.imagesize])
-
+            mask = torch.zeros([1, *image.size()[1:]])
         # Return the data dictionary
         return {
             "image": image,
@@ -145,7 +144,7 @@ class ViaductDataset(torch.utils.data.Dataset):
                 maskpaths_per_class["good"] = None
 
         # Unrolls the data dictionary to an easy-to-iterate list.
-        data_to_iterate = []
+        transform.std = []
         for anomaly in sorted(imgpaths_per_class.keys()):
             for i, image_path in enumerate(imgpaths_per_class[anomaly]):
                 mask_path = (

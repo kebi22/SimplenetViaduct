@@ -117,7 +117,7 @@ class BTADDataset(torch.utils.data.Dataset):
         }
 
     def __len__(self):
-        return len(self.data_to_iterate)
+        return len(self.)
 
     def get_image_data(self):
         imgpaths_per_class = {}
